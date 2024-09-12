@@ -42,11 +42,15 @@ jobs:
       - name: Setup Git Authentication
         run: |
           git remote set-url origin https://x-access-token:${{ secrets.SE_HW2 }}@github.com/${{ github.repository }}.git
-
+     
+      - name: Clean Working Directory
+        run: |
+         git reset --hard
+         git clean -fd
       - name: Pull Latest Changes
         run: |
          git fetch origin
-        # git rebase origin/main
+         git rebase origin/main
 
       - name: Commit and Push Changes
         run: |
