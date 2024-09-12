@@ -23,9 +23,9 @@ jobs:
 
       - name: Run Pylint on hw2_debugging.py and rand.py
         run: |
-          pylint hw2_debugging.py > pylint_trace.txt
-          pylint rand.py > pylint_trace.txt
-          cat pylint_trace.txt
+          pylint hw2/hw2_debugging.py > traces/pylint_trace.txt
+          pylint hw2/rand.py > traces/pylint_trace.txt
+          cat traces/pylint_trace.txt
           
 
      # - name: Run Pytest
