@@ -6,6 +6,9 @@ on:
   pull_request:
     branches: [main]
 
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -29,13 +32,7 @@ jobs:
 
       - name: Run Pylint and Replace Output
         run: |
-            pylint hw2/hw2_debugging.py hw2/rand.py > pyLintTrace.txt || true
-  
-            if [ -f post_traces/pylint_trace.txt ]; then
-              cat pyLintTrace.txt >> post_traces/pylint_trace.txt
-            else
-              mv pyLintTrace.txt post_traces/pylint_trace.txt
-            fi
+          pylint hw2/hw2_debugging.py hw2/rand.py > traces/pylint_trace.txt || true
 
       - name: Configure Git
         run: |
