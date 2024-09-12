@@ -5,3 +5,4 @@
 [![Pylint](https://github.com/SE-Fall2024/SE-HW-2/actions/workflows/pylint.yml/badge.svg)](https://github.com/SE-Fall2024/SE-HW-2/actions/workflows/pylint.yml)
 [![codecov](https://codecov.io/gh/SE-Fall2024/SE-HW-2/graph/badge.svg?token=BHH0BGZLIW)](https://codecov.io/gh/SE-Fall2024/SE-HW-2)
 ![Static Badge](https://img.shields.io/badge/License-Mozilla_Public_License_2.0-green)
+[![Radon](https://github.com/SE-Fall2024/SE-HW-2/actions/workflows/radon.yml/badge.svg)](https://github.com/SE-Fall2024/SE-HW-2/actions/workflows/radon.yml)
