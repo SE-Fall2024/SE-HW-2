@@ -3,7 +3,7 @@ import subprocess
 
 def random_array(arr):
     '''Random Array Function'''
-    for i in range(len(arr)):  # Iterate over the index directly
+    for i,_in in enumerate(arr):  # Iterate over the index directly
         shuffled_num = subprocess.run(
             ["shuf", "-i1-20", "-n1"], capture_output=True, check=True
         )
