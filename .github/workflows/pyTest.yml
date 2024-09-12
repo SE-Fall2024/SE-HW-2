@@ -1,0 +1,41 @@
+name: Pytest status
+
+on: 
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python environment
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pytest pytest-cov codecov
+
+      - name: Run tests and generate code coverage report
+        id: pyTest
+        run: |
+          pytest  --cov=. --cov-report=xml --cov-report=term
+        continue-on-error: true  # Continue to the next step even if the test one fails
+
+      - name: Upload coverage to Codecov and Always display coverage report
+        if: always()
+        uses: codecov/codecov-action@v4
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: cat coverage.xml
+
+      - name: Fail the job when tests gets an error or fails
+        if: ${{ steps.pyTest.outcome == 'failure' }}
+        run: exit 1
