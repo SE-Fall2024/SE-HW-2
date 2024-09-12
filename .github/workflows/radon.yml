@@ -47,10 +47,12 @@ jobs:
       - name: Setup Git Authentication
         run: |
           git remote set-url origin https://x-access-token:${{ secrets.RADON_TOKEN }}@github.com/${{ github.repository }}.git
+      
+      - name: Pull Latest Changes
+        run: git pull origin main || true  # Avoid failure if no changes to pull
 
       - name: Commit and Push Radon Results
         run: |
-          git fetch origin
           git add traces/radon_traces.txt
           git commit -m "Update radon_traces.txt with latest Radon analysis results"
           git push origin HEAD:main
