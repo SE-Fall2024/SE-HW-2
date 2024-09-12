@@ -77,9 +77,9 @@ jobs:
       - name: Pull Latest Changes
         run: git pull origin main
 
-      # - name: Commit and Push Changes
-      #   run: |
-      #     git add traces/pylint_trace.txt
-      #     git commit -m "Update python files with latest Autopep8 results"
-      #     git push origin HEAD:main
+      - name: Commit and Push Changes
+        run: |
+          git add traces/pylint_trace.txt
+          git commit -m "Update python files with latest Autopep8 results"
+          git push origin HEAD:main
 
