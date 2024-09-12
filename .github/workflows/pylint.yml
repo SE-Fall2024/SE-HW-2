@@ -46,7 +46,7 @@ jobs:
       - name: Pull Latest Changes
         run: |
          git fetch origin
-         git rebase origin/main
+        # git rebase origin/main
 
       - name: Commit and Push Changes
         run: |
