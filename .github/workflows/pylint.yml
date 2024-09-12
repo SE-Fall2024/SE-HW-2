@@ -1,4 +1,4 @@
-name: Pylint
+name: Pylint File
 
 on:
   push:
@@ -10,7 +10,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
+
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
@@ -25,16 +27,17 @@ jobs:
         run: |
           mkdir -p traces
 
-      - name: List files before running Pylint
-        run: |
-          ls -la hw2
-          ls -la traces
-
-      - name: Run Pylint on hw2_debugging.py and rand.py
+      - name: Run Pylint and Replace Output
         run: |
           pylint hw2/hw2_debugging.py hw2/rand.py > traces/pylint_trace.txt
 
-      - name: List files after running Pylint
+      - name: Configure Git
         run: |
-          ls -la traces
-          cat traces/pylint_trace.txt
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+
+      - name: Commit and Push Changes
+        run: |
+          git add traces/pylint_trace.txt
+          git commit -m "Update pylint_trace.txt with latest Pylint results"
+          git push origin main
