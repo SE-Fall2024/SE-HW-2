@@ -21,7 +21,7 @@ jobs:
           python -m pip install --upgrade pip
         #  pip install pylint pytest
 
-      - name: Run AutoPep8 on hw2_debugging.py and rand.py
+      - name: Run Pylint on hw2_debugging.py and rand.py
         run: |
           pylint hw2_debugging.py > pylint_trace.txt
           pylint rand.py > pylint_trace.txt
