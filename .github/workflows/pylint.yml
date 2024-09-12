@@ -1,4 +1,4 @@
-name: Pylint and Update File
+name: Pylint
 
 on:
   push:
@@ -29,7 +29,7 @@ jobs:
 
       - name: Run Pylint and Replace Output
         run: |
-          pylint hw2/hw2_debugging.py hw2/rand.py > traces/pylint_trace.txt
+          pylint hw2/hw2_debugging.py hw2/rand.py > traces/pylint_traces.txt
 
       - name: Configure Git
         run: |
@@ -42,6 +42,6 @@ jobs:
 
       - name: Commit and Push Changes
         run: |
-          git add traces/pylint_trace.txt
-          git commit -m "Update pylint_trace.txt with latest Pylint results"
+          git add traces/pylint_traces.txt
+          git commit -m "Update pylint_traces.txt with latest Pylint results"
           git push origin HEAD:main
