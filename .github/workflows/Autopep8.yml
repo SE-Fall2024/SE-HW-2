@@ -1,3 +1,33 @@
+# name: Autopep8
+
+# on:
+#   push:
+#     branches: [main]
+#   pull_request:
+#     branches: [main]
+
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: actions/checkout@v2
+#       - name: Set up Python
+#         uses: actions/setup-python@v2
+#         with:
+#           python-version: '3.x'
+
+#       - name: Install dependencies
+#         run: |
+#           python -m pip install --upgrade pip
+#           pip install autopep8 pytest
+
+#       - name: Run AutoPep8 on hw2_debugging.py and rand.py
+#         run: |
+#           autopep8 --in-place --aggressive --aggressive hw2/hw2_debugging.py hw2/rand.py
+#           # Redirect output to text files for trace
+
+#      # - name: Run Pytest
+#      #   run: pytest
 name: Autopep8
 
 on:
@@ -6,11 +36,16 @@ on:
   pull_request:
     branches: [main]
 
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
+
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
@@ -19,14 +54,32 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install autopep8 pytest
+          pip install autopep8
 
-      - name: Run AutoPep8 on hw2_debugging.py and rand.py
+     # - name: Create hw2 directory
+     #   run: |
+     #     mkdir -p hw2
+
+      - name: Run Autopep8 and Replace Output
         run: |
-          autopep8 --in-place --aggressive --aggressive hw2/hw2_debugging.py hw2/rand.py
-          # Redirect output to text files for trace
+          autopep8 --in-place --aggressive --aggressive hw2.debugging.py
+          autopep8 --in-place --aggressive --aggressive hw2.rand.py
 
-     # - name: Run Pytest
-     #   run: pytest
+      - name: Configure Git
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
 
+      - name: Setup Git Authentication
+        run: |
+          git remote set-url origin https://x-access-token:${{ secrets.SE_HW2 }}@github.com/${{ github.repository }}.git
+
+      - name: Pull Latest Changes
+        run: git pull origin main
+
+      - name: Commit and Push Changes
+        run: |
+          git add traces/pylint_trace.txt
+          git commit -m "Update python files with latest Autopep8 results"
+          git push origin HEAD:main
 
