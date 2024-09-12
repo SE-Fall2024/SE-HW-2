@@ -44,7 +44,9 @@ jobs:
           git remote set-url origin https://x-access-token:${{ secrets.SE_HW2 }}@github.com/${{ github.repository }}.git
 
       - name: Pull Latest Changes
-        run: git pull origin main
+        run: |
+         git fetch origin
+         git rebase origin/main
 
       - name: Commit and Push Changes
         run: |
