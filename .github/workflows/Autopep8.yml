@@ -79,7 +79,7 @@ jobs:
 
       - name: Commit and Push Changes
         run: |
-          git add traces/pylint_trace.txt
+          git add -A
           git commit -m "Update python files with latest Autopep8 results"
           git push origin HEAD:main
 
