@@ -32,7 +32,7 @@ jobs:
 
       - name: Run Pylint on hw2_debugging.py and rand.py
         run: |
-          pylint hw2/hw2_debugging.py hw2/rand.py | tee -a traces/pylint_trace.txt
+          pylint hw2/hw2_debugging.py hw2/rand.py > traces/pylint_trace.txt
 
       - name: List files after running Pylint
         run: |
