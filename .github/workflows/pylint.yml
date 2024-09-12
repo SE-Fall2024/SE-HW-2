@@ -1,4 +1,4 @@
-name: Pylint File
+name: Pylint and Update File
 
 on:
   push:
@@ -37,7 +37,9 @@ jobs:
           git config --global user.email "actions@github.com"
 
       - name: Commit and Push Changes
+        env:
+          PAT: ${{ secrets.SE_HW2 }}
         run: |
           git add traces/pylint_trace.txt
           git commit -m "Update pylint_trace.txt with latest Pylint results"
-          git push origin main
+          git push https://x-access-token:${SE_HW2}@github.com/${{ github.repository }}.git HEAD:main
