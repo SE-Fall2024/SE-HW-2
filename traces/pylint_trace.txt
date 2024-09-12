@@ -46,3 +46,11 @@ hw2/rand.py:6:4: C0200: Consider using enumerate instead of iterating with range
 -----------------------------------
 Your code has been rated at 9.39/10
 
+************* Module hw2_debugging
+hw2/hw2_debugging.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+************* Module rand
+hw2/rand.py:6:4: C0200: Consider using enumerate instead of iterating with range and len (consider-using-enumerate)
+
+-----------------------------------
+Your code has been rated at 9.39/10
+
