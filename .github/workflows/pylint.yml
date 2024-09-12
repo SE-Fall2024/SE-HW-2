@@ -23,8 +23,9 @@ jobs:
 
       - name: Run AutoPep8 on hw2_debugging.py and rand.py
         run: |
-          pylint hw2_debugging.py rand.py >> pylint_trace.txt
-          cat pylint_report.txt
+          pylint hw2_debugging.py > pylint_trace.txt
+          pylint rand.py > pylint_trace.txt
+          cat pylint_trace.txt
           
 
       - name: Run Pytest
