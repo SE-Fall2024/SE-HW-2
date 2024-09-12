@@ -51,7 +51,6 @@ jobs:
       - name: Commit and Push Radon Results
         run: |
           git fetch origin
-          git rebase origin/main
           git add traces/radon_traces.txt
           git commit -m "Update radon_traces.txt with latest Radon analysis results"
           git push origin HEAD:main
