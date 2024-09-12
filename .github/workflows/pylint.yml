@@ -19,15 +19,13 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-        #  pip install pylint pytest
+          pip install pylint
+
+      - name: Create traces directory
+        run: |
+          mkdir -p traces
 
       - name: Run Pylint on hw2_debugging.py and rand.py
         run: |
-          pylint hw2/hw2_debugging.py >> traces/pylint_trace.txt
-          pylint hw2/rand.py >> traces/pylint_trace.txt
+          pylint hw2/hw2_debugging.py hw2/rand.py | tee -a traces/pylint_trace.txt
           cat traces/pylint_trace.txt
-          
-
-     # - name: Run Pytest
-     #   run: pytest
-
