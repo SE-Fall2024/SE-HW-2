@@ -23,7 +23,7 @@ jobs:
 
       - name: Run AutoPep8 on hw2_debugging.py and rand.py
         run: |
-          autopep8 --in-place --aggressive --aggressive hw2_debugging.py rand.py
+          autopep8 --in-place --aggressive --aggressive hw2/hw2_debugging.py hw2/rand.py
           # Redirect output to text files for trace
 
       - name: Run Pytest
