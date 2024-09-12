@@ -75,11 +75,17 @@ jobs:
           git remote set-url origin https://x-access-token:${{ secrets.SE_HW2 }}@github.com/${{ github.repository }}.git
 
       - name: Pull Latest Changes
-        run: git pull origin main
+        run: git pull origin main || true  # Avoid failure if no changes to pull
 
-      - name: Commit and Push Changes
+      - name: Add Changes
+        run: git add -A
+
+      - name: Commit Changes If Any
         run: |
-          git add -A
-          git commit -m "Update python files with latest Autopep8 results"
-          git push origin HEAD:main
+          if [ -n "$(git status --porcelain)" ]; then
+            git commit -m "Update python files with latest Autopep8 results"
+            git push origin HEAD:main
+          else
+            echo "No changes to commit"
+          fi
 
