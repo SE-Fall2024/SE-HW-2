@@ -43,14 +43,8 @@ jobs:
         run: |
           git remote set-url origin https://x-access-token:${{ secrets.SE_HW2 }}@github.com/${{ github.repository }}.git
      
-      - name: Clean Working Directory
-        run: |
-         git reset --hard
-         git clean -fd
       - name: Pull Latest Changes
-        run: |
-         git fetch origin
-         git rebase origin/main
+        run: git pull origin main || true  # Avoid failure if no changes to pull
 
       - name: Commit and Push Changes
         run: |
