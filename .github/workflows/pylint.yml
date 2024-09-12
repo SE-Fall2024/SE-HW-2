@@ -42,4 +42,4 @@ jobs:
         run: |
           git add traces/pylint_trace.txt
           git commit -m "Update pylint_trace.txt with latest Pylint results"
-          git push https://x-access-token:${SE_HW2}@github.com/${{ github.repository }}.git HEAD:main
+          git push https://x-access-token:${PAT}@github.com/${{ github.repository }}.git HEAD:main
