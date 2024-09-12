@@ -1,0 +1,55 @@
+name: Radon 
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Install Radon
+        run: |
+          python -m pip install --upgrade pip
+          pip install radon
+
+      - name: Create traces directory
+        run: |
+          mkdir -p traces
+
+      - name: Run Radon Maintainability Analysis
+        run: |
+          radon mi . >> traces/radon_traces.txt || true
+
+      - name: Run Radon Complexity Analysis
+        run: |
+          radon cc . -s >> traces/radon_traces.txt || true
+
+      - name: Configure Git
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+
+      - name: Setup Git Authentication
+        run: |
+          git remote set-url origin https://x-access-token:${{ secrets.RADON_TOKEN }}@github.com/${{ github.repository }}.git
+
+      - name: Commit and Push Radon Results
+        run: |
+          git add traces/radon_traces.txt
+          git commit -m "Update radon_traces.txt with latest Radon analysis results"
+          git push origin HEAD:main
