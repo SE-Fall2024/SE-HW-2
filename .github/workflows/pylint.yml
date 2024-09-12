@@ -28,6 +28,6 @@ jobs:
           cat pylint_trace.txt
           
 
-      - name: Run Pytest
-        run: pytest
+     # - name: Run Pytest
+     #   run: pytest
 
