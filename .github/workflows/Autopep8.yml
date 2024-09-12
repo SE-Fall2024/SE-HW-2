@@ -62,7 +62,7 @@ jobs:
 
       - name: Run Autopep8 and Replace Output
         run: |
-          autopep8 --in-place --aggressive --aggressive hw2.hw_debugging.py
+          autopep8 --in-place --aggressive --aggressive hw2.hw2_debugging.py
           autopep8 --in-place --aggressive --aggressive hw2.rand.py
 
       - name: Configure Git
