@@ -375,3 +375,15 @@ hw2/test_mergesort.py
     F 3:0 test_merge_sort_empty - A (2)
     F 6:0 test_merge_sort_single_element - A (2)
     F 9:0 test_merge_sort_multiple_elements - A (2)
+hw2/hw2_debugging.py - A
+hw2/rand.py - A
+hw2/test_mergesort.py - A
+hw2/hw2_debugging.py
+    F 20:0 recombine - B (6)
+    F 5:0 merge_sort - A (5)
+hw2/rand.py
+    F 5:0 random_array - A (2)
+hw2/test_mergesort.py
+    F 3:0 test_merge_sort_empty - A (2)
+    F 6:0 test_merge_sort_single_element - A (2)
+    F 9:0 test_merge_sort_multiple_elements - A (2)
