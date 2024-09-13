@@ -153,3 +153,7 @@ hw2/hw2_debugging.py:44:10: E0602: Undefined variable 'merge_sort' (undefined-va
 -----------------------------------
 Your code has been rated at 5.15/10
 
+
+------------------------------------
+Your code has been rated at 10.00/10
+
