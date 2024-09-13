@@ -2,7 +2,7 @@
 import rand
 
 
-def merge_Sort(arr):
+def merge_sort(arr):
     '''Merge sort function'''
     # Remove None values from the array
     arr = [x for x in arr if x is not None]
