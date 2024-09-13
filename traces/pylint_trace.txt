@@ -161,3 +161,9 @@ Your code has been rated at 10.00/10
 ------------------------------------
 Your code has been rated at 10.00/10
 
+************* Module hw2_debugging
+hw2/hw2_debugging.py:24:4: C0103: Variable name "merge_Arr" doesn't conform to snake_case naming style (invalid-name)
+
+-----------------------------------
+Your code has been rated at 9.70/10
+
