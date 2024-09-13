@@ -5,7 +5,7 @@ on:
     branches: [main]
   pull_request:
     branches: [main]
-    
+
 permissions:
   contents: write
 
@@ -26,7 +26,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install autopep8
 
-      - name: Run Autopep8 and Replace Output
+      - name: Run Autopep8
         run: |
           autopep8 --in-place --aggressive --aggressive hw2/hw2_debugging.py
           autopep8 --in-place --aggressive --aggressive hw2/rand.py
@@ -40,18 +40,19 @@ jobs:
         run: |
           git remote set-url origin https://x-access-token:${{ secrets.SE_HW2 }}@github.com/${{ github.repository }}.git
 
-      - name: Pull Latest Changes
-        run: git pull origin main || true  # Avoid failure if no changes to pull
-
-      - name: Add Changes
-        run: git add -A
-
-      - name: Commit Changes If Any
+      - name: Check for Changes
+        id: check-changes
         run: |
-          if [ -n "$(git status --porcelain)" ]; then
-            git commit -m "Update python files with latest Autopep8 results"
-            git push origin HEAD:main
-          else
+          git add -A
+          if git diff --cached --quiet; then
             echo "No changes to commit"
+            echo "::set-output name=changes::false"
+          else
+            echo "::set-output name=changes::true"
           fi
 
+      - name: Commit and Push Changes
+        if: steps.check-changes.outputs.changes == 'true'
+        run: |
+          git commit -m "Update python files with latest Autopep8 results"
+          git push origin HEAD:main
