@@ -2,6 +2,7 @@
 import rand
 
 
+
 def merge_sort(arr):
     '''Merge sort function'''
     # Remove None values from the array
