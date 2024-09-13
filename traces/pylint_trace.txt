@@ -144,3 +144,12 @@ Your code has been rated at 10.00/10
 ------------------------------------
 Your code has been rated at 10.00/10
 
+************* Module hw2_debugging
+hw2/hw2_debugging.py:5:0: C0103: Function name "merge_Sort" doesn't conform to snake_case naming style (invalid-name)
+hw2/hw2_debugging.py:17:21: E0602: Undefined variable 'merge_sort' (undefined-variable)
+hw2/hw2_debugging.py:17:45: E0602: Undefined variable 'merge_sort' (undefined-variable)
+hw2/hw2_debugging.py:44:10: E0602: Undefined variable 'merge_sort' (undefined-variable)
+
+-----------------------------------
+Your code has been rated at 5.15/10
+
