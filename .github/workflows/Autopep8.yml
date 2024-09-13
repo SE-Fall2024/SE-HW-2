@@ -40,6 +40,16 @@ jobs:
         run: |
           git remote set-url origin https://x-access-token:${{ secrets.SE_HW2 }}@github.com/${{ github.repository }}.git
 
+      - name: Fetch Latest Changes
+        run: git fetch origin
+
+      - name: Rebase Latest Changes
+        run: |
+          git rebase origin/main || {
+            echo "failed.";
+            exit 1;
+          }
+
       - name: Check for Changes
         id: check-changes
         run: |
